@@ -51,16 +51,16 @@
 
 -(void)scrollViewAddSubView:(NSString*)selectValue
 {
-    CGFloat marginLeft=10.0;
-    CGFloat marginTop=5.0;
+    CGFloat leftLength=10.0;
+    CGFloat topLength=5.0;
     _addIndex++;
     CGSize size=self.btnScrollView.frame.size;
-    CGFloat scrollViewWidth=size.width-marginLeft*2;
+    CGFloat scrollViewWidth=size.width-leftLength*2;
     CGFloat scrollViewHeight=size.height;
     CGFloat selectValueWidth=selectValue.length*20.0+8.0;//btn的长度
     CGFloat selectValueHeight=40.0;  //选择的高度
     CGFloat selectValueMarginLeft=0;  //空白距离
-    _addWidth+=selectValueWidth+(_addIndex-1)*marginLeft;
+    _addWidth+=selectValueWidth+(_addIndex-1)*leftLength;
     if(_addWidth>scrollViewWidth)
     {
         selectValueMarginLeft=10.0;
@@ -69,20 +69,20 @@
     }
     else
     {
-        selectValueMarginLeft=_addWidth-selectValueWidth+marginLeft;
+        selectValueMarginLeft=_addWidth-selectValueWidth+leftLength;
     }
     if(_addRow>1)
     {
-        marginTop=_addRow*5.0+(_addRow-1)*selectValueHeight;
+        topLength=_addRow*5.0+(_addRow-1)*selectValueHeight;
     }
     else
     {
-        marginTop=5.0;
+        topLength=5.0;
     }
     
     
-    _addWidth-=(_addIndex-1)*marginLeft;
-    UIButton*addBtn=[[UIButton alloc]initWithFrame:CGRectMake(selectValueMarginLeft, marginTop, selectValueWidth, selectValueHeight)];
+    _addWidth-=(_addIndex-1)*leftLength;
+    UIButton*addBtn=[[UIButton alloc]initWithFrame:CGRectMake(selectValueMarginLeft, topLength, selectValueWidth, selectValueHeight)];
     [addBtn setTitleColor:[UIColor redColor ] forState:UIControlStateNormal];
     [addBtn setTitle:selectValue forState:UIControlStateNormal];
     addBtn.backgroundColor=[UIColor greenColor];
@@ -96,7 +96,7 @@
     
     if(_addRow*5.0+(_addRow+1)*selectValueHeight>scrollViewHeight)
     {
-        self.btnScrollView.contentSize=CGSizeMake(scrollViewWidth+marginLeft*2, _addRow*5.0+(_addRow)*selectValueHeight+5);
+        self.btnScrollView.contentSize=CGSizeMake(scrollViewWidth+leftLength*2, _addRow*5.0+(_addRow)*selectValueHeight+5);
     }
 }
 
